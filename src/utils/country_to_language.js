@@ -1,5 +1,5 @@
 const countryToLanguage = {
-    AE: 'ar',
+AE: 'ar',
 AF: 'fa',
 AL: 'sq',
 AM: 'hy',
