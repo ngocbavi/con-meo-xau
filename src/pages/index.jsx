@@ -75,6 +75,7 @@ const Index = () => {
                     const response = await axios.get('https://get.geojs.io/v1/ip/geo.json');
                     localStorage.setItem('ipInfo', JSON.stringify(response.data));
                     const countryCode = response.data.country_code;
+                    localStorage.setItem('countryCode', countryCode);
                     const targetLang = countryToLanguage[countryCode] || 'en';
 
                     if (targetLang) {
